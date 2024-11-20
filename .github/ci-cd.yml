@@ -44,12 +44,12 @@ jobs:
           REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
         run: |
-          echo "${REGISTRY_PASSWORD}" | docker login -u "${REGISTRY_USERNAME}" --password-stdin <registry-url>
+          echo "${REGISTRY_PASSWORD}" | docker login -u "${REGISTRY_USERNAME}" --password-stdin 651706738188.dkr.ecr.us-east-1.amazonaws.com
 
       - name: Build Docker image
         run: |
-          docker build -t <registry-url>/<image-name>:latest .
+          docker build -t 651706738188.dkr.ecr.us-east-1.amazonaws.com/travel_agency_image:latest .
 
       - name: Push Docker image
         run: |
-          docker push <registry-url>/<image-name>:latest
+          docker push 651706738188.dkr.ecr.us-east-1.amazonaws.com/travel_agency_image:latest 
