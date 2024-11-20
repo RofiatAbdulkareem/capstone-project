@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: transformed_data_model
+    description: "This model transforms the raw transformed_data table to include calculated population density and other relevant fields."
+    columns:
+      - name: country_name
+        description: "The common name of the country."
+      - name: official_name
+        description: "The official name of the country."
+      - name: region
+        description: "The primary geographical region where the country is located."
+      - name: sub_region
+        description: "The specific sub-region where the country is located."
+      - name: population
+        description: "The total population of the country."
+      - name: area
+        description: "The total area of the country in square kilometers."
+      - name: population_density
+        description: "Population per unit area, calculated as population divided by area."
+      - name: currency_code
+        description: "The ISO currency code of the country's primary currency."
+      - name: currency_name
+        description: "The name of the country's primary currency."
+      - name: currency_symbol
+        description: "The symbol of the country's primary currency."
+      - name: languages
+        description: "The official languages spoken in the country."
+      - name: idd_code
+        description: "The international dialing code for the country."
+      - name: capital
+        description: "The capital city of the country."

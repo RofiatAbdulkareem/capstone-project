@@ -1,0 +1,25 @@
+# Python-specific
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+
+# Logs
+*.log
+
+# Airflow-related
+airflow.db
+dags/__pycache__/
+logs/
+
+# DBT artifacts
+target/
+
+# Terraform-specific
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Docker-specific
+.dockerignore

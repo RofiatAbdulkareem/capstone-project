@@ -1,0 +1,8 @@
+
+version: 2
+
+sources:
+  - name: travel_agency_project
+    schema: public
+    tables:
+      - name: transformed_data
