@@ -108,3 +108,58 @@ This project delivers a robust *Data Platform* for a Travel Agency, enabling the
 3. Deploy Docker containers on *AWS EC2*.
 4. Configure and execute Apache Airflow DAGs for data pipeline orchestration.
 5. Run DBT transformations to create Fact and Dimension tables.
+
+
+### Analysis Summary
+
+
+Insights from Views:
+
+## Currency Distribution:
+Africa has the highest number of currencies (58), followed by Europe (52).
+
+## Population Density:
+Bouvet Island and Heard Island have the lowest population densities, while highly populated regions like Asia dominate the global population share.
+
+## Start of the Week:
+Most countries start their week on Monday (229 countries), while only a few start on Sunday or Saturday.
+
+## Top Regions:
+Asia has the largest population, while the Americas cover the most area.
+
+## Top Languages:
+English is the dominant language in the Americas, and French leads in Africa.
+
+## Visualizations  
+
+### 1. Currencies by Continent  
+Bar plot showing the number of currencies per continent:  
+![Currencies by Continent](./currencies_by_continent.png)  
+
+---
+
+### 2. Top 10 and Bottom 10 Countries by Population Density  
+
+#### Top 10 Countries by Population Density  
+![Top 10 Population Density](./top_10_population_density.png)  
+
+#### Bottom 10 Countries by Population Density  
+![Bottom 10 Population Density](./bottom_10_population_density.png)  
+
+---
+
+### 3. Start of the Week Analysis  
+Bar plot showing country counts for each start day:  
+![Start of the Week Analysis](./start_of_week_analysis.png)  
+
+---
+
+### 4. Region Insights  
+
+#### Population by Region  
+![Population by Region](./population_by_region.png)
+---
+
+### 5. Top Languages by Region  
+Language distribution across regions:  
+![Top Languages by Region](./top_languages_by_region.png)  

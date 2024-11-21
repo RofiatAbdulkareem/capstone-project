@@ -6,6 +6,7 @@ SELECT
     official_name,
     region,
     sub_region,
+    continents,
     independence,
     un_member,
     start_of_week

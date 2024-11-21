@@ -2,6 +2,7 @@
 
 SELECT
     country_id,
+    country_name,
     population,
     area,
     population_density,
