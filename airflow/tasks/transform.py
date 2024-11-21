@@ -1,5 +1,6 @@
 """
-A script to fetch country data from an API, transform it, and upload it to an S3 bucket.
+A script to fetch country data from an API,
+transform it, and upload it to an S3 bucket.
 """
 
 import boto3
@@ -38,15 +39,15 @@ def safe_get(dictionary, *keys):
 
 def extract_currency_info(currency_dict):
     """
-    Extracts currency information from a 
+    Extracts currency information from a
     nested dictionary.
 
     Args:
-        currency_dict (dict): Dictionary 
+        currency_dict (dict): Dictionary
         containing currency details.
 
     Returns:
-        dict: A dictionary with currency_code, 
+        dict: A dictionary with currency_code,
         currency_name, and currency_symbol.
     """
     if isinstance(currency_dict, dict):
@@ -57,8 +58,8 @@ def extract_currency_info(currency_dict):
                 "currency_symbol": safe_get(details, "symbol"),
             }
     return {
-        "currency_code": None, 
-        "currency_name": None, 
+        "currency_code": None,
+        "currency_name": None,
         "currency_symbol": None
         }
 
@@ -116,7 +117,11 @@ def transform_data():
         print("Saving transformed data to S3...")
         s3_client = boto3.client("s3")
         parquet_buffer = io.BytesIO()
-        df_transformed.to_parquet(parquet_buffer, index=False, engine="pyarrow")
+        df_transformed.to_parquet(
+            parquet_buffer,
+            index=False,
+            engine="pyarrow"
+        )
 
         s3_client.put_object(
             Bucket=S3_BUCKET_NAME,

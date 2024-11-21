@@ -1,8 +1,5 @@
-"""
-A script to fetch transformed data from S3 and load it 
-into a PostgreSQL database.
-"""
-
+"""A script to fetch transformed data from S3 and load it
+into a PostgreSQL database."""
 import pandas as pd
 import boto3
 from sqlalchemy import create_engine
@@ -11,7 +8,7 @@ import io
 
 def write_to_warehouse():
     """
-    Reads transformed data from an S3 bucket and writes it to 
+    Reads transformed data from an S3 bucket and writes it to
     a PostgreSQL database.
     """
     try:
@@ -54,7 +51,7 @@ def write_to_warehouse():
         db_port = "5432"
         db_name = "travel_agency_dw"
         connection_string = (
-            f"postgresql+psycopg2://{db_user}:{rds_password}@{db_host}:
+            f"postgresql+psycopg2://{db_user}:{rds_password}@{db_host}:"
             f"{db_port}/{db_name}"
         )
 
@@ -66,13 +63,13 @@ def write_to_warehouse():
         table_name = "transformed_data"
         print(f"Loading data into the '{table_name}' table...")
         df_transformed.to_sql(
-            name=table_name, 
-            con=engine, 
-            if_exists="replace", 
+            name=table_name,
+            con=engine,
+            if_exists="replace",
             index=False
         )
         print(
-            f"Data successfully loaded into the '{table_name}'" 
+            f"Data successfully loaded into the '{table_name}'"
             "table in PostgreSQL."
         )
 
@@ -80,7 +77,7 @@ def write_to_warehouse():
         print(f"An AWS error occurred: {aws_error}")
         raise
     except pd.errors.PandasError as pandas_error:
-        print(f"An error occurred while handling the DataFrame: {pandas_error}")
+        print(f"An error occurred: {pandas_error}")
         raise
     except Exception as general_error:
         print(f"An unexpected error occurred: {general_error}")
