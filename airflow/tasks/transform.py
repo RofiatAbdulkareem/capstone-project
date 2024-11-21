@@ -38,13 +38,16 @@ def safe_get(dictionary, *keys):
 
 def extract_currency_info(currency_dict):
     """
-    Extracts currency information from a nested dictionary.
+    Extracts currency information from a 
+    nested dictionary.
 
     Args:
-        currency_dict (dict): Dictionary containing currency details.
+        currency_dict (dict): Dictionary 
+        containing currency details.
 
     Returns:
-        dict: A dictionary with currency_code, currency_name, and currency_symbol.
+        dict: A dictionary with currency_code, 
+        currency_name, and currency_symbol.
     """
     if isinstance(currency_dict, dict):
         for code, details in currency_dict.items():
@@ -53,12 +56,17 @@ def extract_currency_info(currency_dict):
                 "currency_name": safe_get(details, "name"),
                 "currency_symbol": safe_get(details, "symbol"),
             }
-    return {"currency_code": None, "currency_name": None, "currency_symbol": None}
+    return {
+        "currency_code": None, 
+        "currency_name": None, 
+        "currency_symbol": None
+        }
 
 
 def transform_data():
     """
-    Transforms data fetched from the API and uploads it to S3 as a Parquet file.
+    Transforms data fetched from the API and
+     uploads it to S3 as a Parquet file.
 
     Returns:
         bool: True if the data was successfully uploaded to S3.
@@ -87,7 +95,9 @@ def transform_data():
                 "capital": (safe_get(country, "capital") or [None])[0],
                 "region": country.get("region", None),
                 "sub_region": country.get("subregion", None),
-                "languages": ", ".join((safe_get(country, "languages") or {}).values()),
+                "languages": ", ".join(
+                    (safe_get(country, "languages") or {}).values()
+                ),
                 "area": country.get("area", None),
                 "population": country.get("population", None),
                 "continents": ", ".join(safe_get(country, "continents") or []),

@@ -35,7 +35,7 @@ with DAG(
         # Pass any necessary arguments to extract_data function
     )
 
-    # Task 2: Transform raw data and upload data to S3 
+    # Task 2: Transform raw data and upload data to S3
     transform_task = PythonOperator(
         task_id="transform_data",
         python_callable=transform_data,

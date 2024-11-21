@@ -15,9 +15,6 @@ S3_FILE_NAME = "raw_data/countries.parquet"
 
 
 def extract_data():
-    """
-    Fetches data from an API, processes it, and uploads it to an S3 bucket.
-    """
     try:
         # Step 1: Fetch data from API
         print("Fetching data from API...")
@@ -39,7 +36,7 @@ def extract_data():
         s3_client = boto3.client("s3")
         with open(local_file_path, "rb") as file:
             s3_client.upload_fileobj(file, S3_BUCKET_NAME, S3_FILE_NAME)
-        print(f"Data successfully uploaded to: {S3_FILE_NAME}")
+        print(f"uploaded to: {S3_FILE_NAME}")
 
         # Step 5: Clean up local file
         os.remove(local_file_path)

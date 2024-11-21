@@ -1,5 +1,6 @@
 """
-A script to fetch transformed data from S3 and load it into a PostgreSQL database.
+A script to fetch transformed data from S3 and load it 
+into a PostgreSQL database.
 """
 
 import pandas as pd
@@ -10,7 +11,8 @@ import io
 
 def write_to_warehouse():
     """
-    Reads transformed data from an S3 bucket and writes it to a PostgreSQL database.
+    Reads transformed data from an S3 bucket and writes it to 
+    a PostgreSQL database.
     """
     try:
         # Step 1: Set up AWS S3 and SSM clients
@@ -45,11 +47,15 @@ def write_to_warehouse():
 
         # Step 6: Database connection parameters
         db_user = "rofee"
-        db_host = "terraform-20241113122124605100000001.cz4qw448wzk4.us-east-1.rds.amazonaws.com"
+        db_host = (
+            "terraform-20241113122124605100000001."
+            "cz4qw448wzk4.us-east-1.rds.amazonaws.com"
+        )
         db_port = "5432"
         db_name = "travel_agency_dw"
         connection_string = (
-            f"postgresql+psycopg2://{db_user}:{rds_password}@{db_host}:{db_port}/{db_name}"
+            f"postgresql+psycopg2://{db_user}:{rds_password}@{db_host}:
+            f"{db_port}/{db_name}"
         )
 
         # Step 7: Create the SQLAlchemy engine
@@ -60,9 +66,15 @@ def write_to_warehouse():
         table_name = "transformed_data"
         print(f"Loading data into the '{table_name}' table...")
         df_transformed.to_sql(
-            name=table_name, con=engine, if_exists="replace", index=False
+            name=table_name, 
+            con=engine, 
+            if_exists="replace", 
+            index=False
         )
-        print(f"Data successfully loaded into the '{table_name}' table in PostgreSQL.")
+        print(
+            f"Data successfully loaded into the '{table_name}'" 
+            "table in PostgreSQL."
+        )
 
     except boto3.exceptions.Boto3Error as aws_error:
         print(f"An AWS error occurred: {aws_error}")
