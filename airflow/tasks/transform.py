@@ -10,6 +10,7 @@ S3_TRANSFORMED_KEY = 'transform/countries_data_transformed.parquet'
 # API endpoint
 API_ENDPOINT = "https://restcountries.com/v3.1/all"
 
+
 def safe_get(dictionary, *keys):
     """
     Safely navigate nested dictionaries and lists.
@@ -23,6 +24,7 @@ def safe_get(dictionary, *keys):
             return None
     return result
 
+
 def extract_currency_info(currency_dict):
     if isinstance(currency_dict, dict):
         for code, details in currency_dict.items():
@@ -32,6 +34,7 @@ def extract_currency_info(currency_dict):
                 'currency_symbol': safe_get(details, 'symbol')
             }
     return {'currency_code': None, 'currency_name': None, 'currency_symbol': None}
+
 
 def transform_data():
     try:
@@ -43,13 +46,17 @@ def transform_data():
         # Extract relevant data with safe handling
         extracted_data = []
         for country in data:
+            idd_root = safe_get(country, 'idd', 'root') or ''
+            idd_suffixes = ''.join(safe_get(country, 'idd', 'suffixes') or [])
+            idd_code = f"{idd_root}{idd_suffixes}"
+
             country_info = {
                 'country_name': safe_get(country, 'name', 'common'),
                 'official_name': safe_get(country, 'name', 'official'),
                 'independence': country.get('independent', None),
                 'un_member': country.get('unMember', None),
                 'start_of_week': country.get('startOfWeek', None),
-                'idd_code': f"{safe_get(country, 'idd', 'root') or ''}{''.join(safe_get(country, 'idd', 'suffixes') or [])}",
+                'idd_code': idd_code,
                 'capital': (safe_get(country, 'capital') or [None])[0],
                 'region': country.get('region', None),
                 'sub_region': country.get('subregion', None),
@@ -73,7 +80,11 @@ def transform_data():
         parquet_buffer = io.BytesIO()
         df_transformed.to_parquet(parquet_buffer, index=False)
 
-        s3_client.put_object(Bucket=S3_BUCKET_NAME, Key=S3_TRANSFORMED_KEY, Body=parquet_buffer.getvalue())
+        s3_client.put_object(
+            Bucket=S3_BUCKET_NAME,
+            Key=S3_TRANSFORMED_KEY,
+            Body=parquet_buffer.getvalue()
+        )
         print("Transformed data saved successfully to S3.")
         return True
 
