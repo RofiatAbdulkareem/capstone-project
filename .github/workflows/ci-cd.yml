@@ -48,8 +48,12 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t 651706738188.dkr.ecr.us-east-1.amazonaws.com/travel_agency_image:latest .
+          docker build -t my-travel-agency-repo .
+        
+      - name: Tag Docker image
+        run: |
+          docker tag my-travel-agency-repo:latest 651706738188.dkr.ecr.us-east-1.amazonaws.com/my-travel-agency-repo:latest
 
       - name: Push Docker image
         run: |
-          docker push 651706738188.dkr.ecr.us-east-1.amazonaws.com/travel_agency_image:latest 
+          docker push 651706738188.dkr.ecr.us-east-1.amazonaws.com/my-travel-agency-repo:latest 
