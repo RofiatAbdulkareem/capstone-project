@@ -56,4 +56,4 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push 651706738188.dkr.ecr.us-east-1.amazonaws.com/my-travel-agency-repo:latest 
+          docker push 651706738188.dkr.ecr.us-east-1.amazonaws.com/my-travel-agency-repo:latest
