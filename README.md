@@ -60,10 +60,10 @@ This project delivers a robust *Data Platform* for a Travel Agency, enabling the
 
 - *Infrastructure Provisioning*:
   - Used *Terraform* to provision AWS resources, including:
-    - *S3* bucket for the Data Lake and state file storage.
-    - *RDS PostgreSQL* instance for the database.
-    - *IAM* roles and policies for secure access.
-    - *EC2* instance for hosting Docker containers.
+    - **S3** bucket for the Data Lake and state file storage.
+    - **RDS PostgreSQL** instance for the database.
+    - **IAM roles** and **policies** for secure access.
+    - **EC2 instance** for hosting Docker containers.
   - Configured the Terraform state file to be stored in an *S3 bucket*, ensuring secure and consistent state management.
 
 ---
@@ -134,7 +134,7 @@ English is the dominant language in the Americas, and French leads in Africa.
 
 ### 1. Currencies by Continent  
 Bar plot showing the number of currencies per continent:  
-![Currencies by Continent](./currencies_by_continent.png)  
+![Currencies by Continent](./currency_count_by_continent.png)  
 
 ---
 
@@ -157,9 +157,7 @@ Bar plot showing country counts for each start day:
 ### 4. Region Insights  
 
 #### Population by Region  
-![Population by Region](./population_by_region.png)
----
 
 ### 5. Top Languages by Region  
 Language distribution across regions:  
-![Top Languages by Region](./top_languages_by_region.png)  
+![Top Languages by Region](./total_population_and_area_by_region.png)  
