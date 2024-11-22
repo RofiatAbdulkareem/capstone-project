@@ -21,7 +21,7 @@ db_port = "5432"
 db_name = "travel_agency_dw"
 
 # Connection string
-connection_string =(
+connection_string = (
     f"postgresql+psycopg2://{db_user}:{db_password}@{db_host}:"
     f"{db_port}/{db_name}"
 )
@@ -30,7 +30,11 @@ connection_string =(
 engine = create_engine(connection_string)
 
 # Query to fetch all views from the database
-query_views = "SELECT table_name FROM pg_catalog.pg_views WHERE schemaname = 'public';"
+query_views = (
+    "SELECT table_name "
+    "FROM pg_catalog.pg_views "
+    "WHERE schemaname = 'public';"
+)
 # Fetch list of all views
 views_df = pd.read_sql(query_views, engine)
 print("Available Views:")
