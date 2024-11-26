@@ -161,3 +161,6 @@ Bar plot showing country counts for each start day:
 ### 5. Top Languages by Region  
 Language distribution across regions:  
 ![Top Languages by Region](./total_population_and_area_by_region.png)  
+
+### Data Architecture
+![Data Architecture](./Pipeline_Architecture.drawio.png)
